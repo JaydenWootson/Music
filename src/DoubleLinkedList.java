@@ -65,6 +65,16 @@ public class DoubleLinkedList<T extends Comparable<T>> {
         return -1;
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Node current = head;
+        while (current != null) {
+            sb.append(current.data).append("->");
+            current = current.next;
+        }
+        return sb.append("NULL").toString();
+    }
+
     private Node getNode(int index) {
         Node curr = head;
         for (int i = 0; i < index; i++) curr = curr.next;
