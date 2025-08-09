@@ -75,6 +75,18 @@ public class DoubleLinkedList<T extends Comparable<T>> {
         return sb.append("NULL").toString();
     }
 
+    public Node shuffle() {
+        if (size < 2) return head;
+        Node curr = head;
+        while (curr != null && curr.next != null) {
+            T temp = curr.data;
+            curr.data = curr.next.data;
+            curr.next.data = temp;
+            curr = curr.next.next;
+        }
+        return head;
+    }
+
     private Node getNode(int index) {
         Node curr = head;
         for (int i = 0; i < index; i++) curr = curr.next;
