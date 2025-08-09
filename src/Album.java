@@ -17,5 +17,12 @@ public class Album {
         return numSongs;
     }
 
+    @Override
+    public String toString() {
+        return id + ": " + numSongs + " -- " + artists;
+    }
 
+    public int compareTo(Album other){
+        return Integer.compare(this.numSongs, other.numSongs);
+    }
 }
