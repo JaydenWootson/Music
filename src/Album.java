@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Album {
+public class Album implements Comparable<Album> {
     private int id;
     private List<String> artists;
     private String title;
@@ -22,6 +22,7 @@ public class Album {
         return id + ": " + numSongs + " -- " + artists;
     }
 
+    @Override
     public int compareTo(Album other){
         return Integer.compare(this.numSongs, other.numSongs);
     }

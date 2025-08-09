@@ -1,5 +1,5 @@
 public class DoubleLinkedList<T extends Comparable<T>> {
-    private class Node {
+    class Node {
         T data;
         Node prev, next;
         Node(T data) {this.data = data; }

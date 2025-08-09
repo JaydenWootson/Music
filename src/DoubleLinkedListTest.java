@@ -24,5 +24,17 @@ public class DoubleLinkedListTest {
         // Test getIndex
         assert list.getIndex(a1) == 0;
         assert list.getIndex(new Album(99, List.of("None"), "None", 0)) == -1;
+
+        // Test shuffle
+        DoubleLinkedList.Node shuffledHead = list.shuffle();
+        assert shuffledHead != null;
+
+        // Test partition
+        DoubleLinkedList<Album> partitioned = list.partition(a1);
+        for (int i = 0; i < partitioned.toString().length(); i++) {
+            assert partitioned.toString().contains("Artist1") || partitioned.toString().contains("Artist2");
+        }
+
+        System.out.println("All tests passed!");
     }
 }
