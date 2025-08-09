@@ -54,6 +54,16 @@ public class DoubleLinkedList<T extends Comparable<T>> {
         return toDelete;
     }
 
+    public int getIndex(T data) {
+        Node current = head;
+        int idx = 0;
+        while (current != null) {
+            if (current.data.equals(data)) return idx;
+            current = current.next;
+            idx++;
+        }
+        return -1;
+    }
 
     private Node getNode(int index) {
         Node curr = head;
