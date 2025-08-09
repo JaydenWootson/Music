@@ -23,7 +23,7 @@ public class DoubleLinkedList<T extends Comparable<T>> {
     }
 
     public Node insert(int index, T data) {
-        if (index < 0 || index > size) throw new IllegalArgumentException("Invaild index");
+        if (index < 0 || index > size) throw new IllegalArgumentException("Invalid index");
         Node newNode = new Node(data);
         if (index == 0) {
             newNode.next = head;
@@ -41,5 +41,23 @@ public class DoubleLinkedList<T extends Comparable<T>> {
         }
         size++;
         return newNode;
+    }
+
+    public Node delete(int index) {
+        if (index < 0 || index >= size) throw new IllegalArgumentException("Invalid index");
+        Node toDelete = getNode(index);
+        if (toDelete.prev != null) toDelete.prev.next = toDelete.next;
+        else head = toDelete.next;
+        if (toDelete.next != null) toDelete.next.prev = toDelete.prev;
+        else tail = toDelete.prev;
+        size--;
+        return toDelete;
+    }
+
+
+    private Node getNode(int index) {
+        Node curr = head;
+        for (int i = 0; i < index; i++) curr = curr.next;
+        return curr;
     }
 }
