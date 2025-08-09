@@ -26,7 +26,7 @@ public class DoubleLinkedListTest {
         assert list.getIndex(new Album(99, List.of("None"), "None", 0)) == -1;
 
         // Test shuffle
-        DoubleLinkedList.Node shuffledHead = list.shuffle();
+        DoubleLinkedList<Album>.Node shuffledHead = list.shuffle();
         assert shuffledHead != null;
 
         // Test partition
