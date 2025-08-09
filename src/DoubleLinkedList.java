@@ -21,4 +21,25 @@ public class DoubleLinkedList<T extends Comparable<T>> {
         size++;
         return head;
     }
+
+    public Node insert(int index, T data) {
+        if (index < 0 || index > size) throw new IllegalArgumentException("Invaild index");
+        Node newNode = new Node(data);
+        if (index == 0) {
+            newNode.next = head;
+            if (head != null) head.prev = newNode;
+            head = newNode;
+            if (tail == null) tail = newNode;
+        } else if (index == size) {
+            return append(data);
+        } else {
+            Node curr = getNode(index);
+            newNode.prev = curr.prev;
+            newNode.next = curr;
+            curr.prev.next = newNode;
+            curr.prev = newNode;
+        }
+        size++;
+        return newNode;
+    }
 }
