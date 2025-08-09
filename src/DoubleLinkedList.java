@@ -8,7 +8,7 @@ public class DoubleLinkedList<T extends Comparable<T>> {
     private Node head, tail;
     private int size = 0;
 
-    public void DoublyLinkedList() {}
+    public DoubleLinkedList() {}
 
     public Node append(T data) {
         Node newNode = new Node(data);
@@ -85,6 +85,16 @@ public class DoubleLinkedList<T extends Comparable<T>> {
             curr = curr.next.next;
         }
         return head;
+    }
+
+    public DoubleLinkedList<T> partition(T data) {
+        DoubleLinkedList<T> result = new DoubleLinkedList<>();
+        Node curr = head;
+        while (curr != null) {
+            if (curr.data.compareTo(data) >= 0) result.append(curr.data);
+            curr = curr.next;
+        }
+        return result;
     }
 
     private Node getNode(int index) {
